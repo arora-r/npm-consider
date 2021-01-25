@@ -6,6 +6,9 @@ const program = require('commander');
 const packageJson = require('./package.json');
 const moment = require('moment');
 const inquirer = require('inquirer');
+
+const addPackageLicensing = require('./lib/addLicenses');
+
 const getPackageDetails = require('./lib/getPackageDetails');
 const walkDependencies = require('./lib/walkDependencies');
 const showImpact = require('./lib/showImpact');
@@ -14,9 +17,7 @@ const showQuickStats = require('./lib/showQuickStats');
 const colors = require('colors/safe');
 const install = require('./lib/install');
 const exec = require('./lib/exec');
-const getInstallCommand = require(
-  './lib/getInstallCommand'
-);
+const getInstallCommand = require('./lib/getInstallCommand');
 
 /**
  * @param  {string} nameVersion
@@ -50,7 +51,8 @@ function getChoices(command, args) {
     `Install (${colors.bold(`${command} ${args.join(' ')}`)})`,
     `Impact`,
     `Details`,
-    `Skip`
+    `Skip`,
+    `Add`
   ];
 }
 
@@ -76,6 +78,8 @@ function promptNextAction(name, versionLoose, packages) {
           return showImpact(name, versionLoose, packages);
         case 2:
           return showDetails(packages);
+        case 3:
+          return addPackageLicensing(name, versionLoose );
         default:
           process.exit(0);
       }

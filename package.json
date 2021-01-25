@@ -1,6 +1,6 @@
 {
   "name": "npm-consider",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Check npm package dependencies, stats and impact on your package before installing it",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/delfrrr/npm-consider.git"
+    "url": "git+https://github.com/arora-r/npm-consider.git"
   },
   "keywords": [
     "npm",
